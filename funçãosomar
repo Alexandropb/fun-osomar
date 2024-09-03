@@ -1,0 +1,14 @@
+Função para somar todos os clientes que foram cadastrados na loja durante um dia
+
+CREATE FUNCTION ContarClientesPorData(@data DATE) 
+RETURNS INT
+AS
+BEGIN
+    DECLARE @TotalClientes INT;
+    
+    SELECT @TotalClientes = COUNT(*)
+    FROM Clientes
+    WHERE CAST(DataCadastro AS DATE) = @data;
+    
+    RETURN @TotalClientes;
+END;
